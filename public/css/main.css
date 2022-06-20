@@ -748,20 +748,20 @@ legend, td, th {
   height: 100%; }
 
 .result-logout__wrapper {
-    display: flex;
-    justify-content: flex-end;
-    width: 520px; }
+  display: flex;
+  justify-content: flex-end;
+  width: 520px; }
 
 .result-logout__link {
-    position: relative;
-    color: #ff9749;
-    font-size: 30px;
-    text-decoration: none; }
+  position: relative;
+  color: #ff9749;
+  font-size: 30px;
+  text-decoration: none; }
 
 .result-logout__link:hover,
 .result-logout__link:focus {
-    color: #f00000;
-    outline: none; }
+  color: #f00000;
+  outline: none; }
 
 .result__logo {
   margin: 220px 0 0; }
