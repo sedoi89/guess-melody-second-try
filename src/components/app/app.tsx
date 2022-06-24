@@ -1,46 +1,59 @@
+import {Route, BrowserRouter, Routes} from 'react-router-dom';
+import {AppRoute, MAX_MISTAKE_COUNT} from '../../const';
 import WelcomeScreen from '../welcome-screen/welcome-screen';
-import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import AuthScreen from '../auth-screen/auth-screen';
 import GameOverScreen from '../game-over-screen/game-over-screen';
-import NotFoundScreen from '../not-found-screen/not-found-screen';
 import WinScreen from '../win-screen/win-screen';
-import {AppRoute, AuthorizationStatus} from '../../types/const';
+import NotFoundScreen from '../not-found-screen/not-found-screen';
 import PrivateRoute from '../private-route/private-route';
-import {Questions} from '../../types/question';
-import GameScreen from '../game-screen';
+import GameScreen from '../game-screen/game-screen';
+import LoadingScreen from '../loading-screen/loading-screen';
+import {isCheckAuth} from '../../game';
+import {useAppSelector} from '../../hooks';
 
-type AppScreenProps = {
-  errorsCount: number;
-  questions: Questions;
-}
 
-function App({errorsCount, questions}: AppScreenProps): JSX.Element {
-
+function App(): JSX.Element {
+  const {authorizationStatus, isDataLoaded} = useAppSelector((state) => state);
+  if (isCheckAuth(authorizationStatus) || !isDataLoaded) {
+    return (
+      <LoadingScreen/>
+    );
+  }
   return (
-
     <BrowserRouter>
       <Routes>
-        <Route path={AppRoute.Root} element={
-          <WelcomeScreen errorsCount={errorsCount}/>
-        }
+        <Route
+          path={AppRoute.Root}
+          element={<WelcomeScreen errorsCount={MAX_MISTAKE_COUNT} />}
         />
-        <Route path={AppRoute.Login} element={<AuthScreen/>}/>
+        <Route
+          path={AppRoute.Login}
+          element={<AuthScreen />}
+        />
         <Route
           path={AppRoute.Result}
           element={
             <PrivateRoute
-              authorizationStatus={AuthorizationStatus.NoAuth}
+              authorizationStatus={authorizationStatus}
             >
-              <WinScreen/>
+              <WinScreen />
             </PrivateRoute>
           }
         />
-
-        <Route path={AppRoute.Lose} element={<GameOverScreen/>}/>
-        <Route path={AppRoute.Game}
-          element={<GameScreen questions={questions}/>}
+        <Route
+          path={AppRoute.Lose}
+          element={<GameOverScreen />}
         />
-        <Route path={'*'} element={<NotFoundScreen/>}/>
+        <Route
+          path={AppRoute.Game}
+          element={
+            <GameScreen />
+          }
+        />
+        <Route
+          path="*"
+          element={<NotFoundScreen />}
+        />
       </Routes>
     </BrowserRouter>
   );

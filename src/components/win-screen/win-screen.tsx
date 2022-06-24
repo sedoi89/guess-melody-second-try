@@ -1,13 +1,13 @@
 import {Link} from 'react-router-dom';
 
-function WinScreen (): JSX.Element {
+function WinScreen(): JSX.Element {
   return (
     <section className="result">
       <div className="result-logout__wrapper">
-        <Link to={'/'} className="result-logout__link">  Выход</Link>
+        <Link className="result-logout__link" to="/">Выход</Link>
       </div>
       <div className="result__logo">
-        <img src="/img/melody-logo.png" alt="Угадай мелодию" width="186" height="83"/>
+        <img src="img/melody-logo.png" alt="Угадай мелодию" width="186" height="83" />
       </div>
       <h2 className="result__title">Вы настоящий меломан!</h2>
       <p className="result__total">Вы ответили правильно на 6 вопросов и совершили 2 ошибки</p>
@@ -15,4 +15,5 @@ function WinScreen (): JSX.Element {
     </section>
   );
 }
+
 export default WinScreen;

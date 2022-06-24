@@ -25,7 +25,6 @@ export type QuestionGenre = {
   type: 'genre';
 };
 
-
 export type Question = QuestionArtist | QuestionGenre;
 
 export type Questions = Question[];
