@@ -1,4 +1,4 @@
-import {Route, BrowserRouter, Routes} from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom';
 import {AppRoute, MAX_MISTAKE_COUNT} from '../../const';
 import WelcomeScreen from '../welcome-screen/welcome-screen';
 import AuthScreen from '../auth-screen/auth-screen';
@@ -10,6 +10,8 @@ import GameScreen from '../game-screen/game-screen';
 import LoadingScreen from '../loading-screen/loading-screen';
 import {isCheckAuth} from '../../game';
 import {useAppSelector} from '../../hooks';
+import HistoryRouter from '../history-router/history-router';
+import browserHistory from '../../rowser-history';
 
 
 function App(): JSX.Element {
@@ -20,7 +22,7 @@ function App(): JSX.Element {
     );
   }
   return (
-    <BrowserRouter>
+    <HistoryRouter history={browserHistory}>
       <Routes>
         <Route
           path={AppRoute.Root}
@@ -55,7 +57,7 @@ function App(): JSX.Element {
           element={<NotFoundScreen />}
         />
       </Routes>
-    </BrowserRouter>
+    </HistoryRouter>
   );
 }
 

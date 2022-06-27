@@ -1,6 +1,6 @@
 import ArtistQuestionScreen from './artist-question-screen/artist-question-screen';
 import {AppRoute, GameType, FIRST_GAME_STEP} from '../types/const';
-import GenreQuestionScreen from './ganre-question-screen/ganre-question-screen';
+import GenreQuestionScreen from './genre-question-screen/genre-question-screen';
 import {QuestionGenre, QuestionArtist, Questions} from '../types/question';
 import {useState} from 'react';
 import {Navigate} from 'react-router-dom';

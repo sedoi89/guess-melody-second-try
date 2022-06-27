@@ -21,7 +21,7 @@ function withAudioPlayer<T>(Component: ComponentType<T>)
           <AudioPlayer
             isPlaying={id === activePlayer}
             src={src}
-            onPlayClick={() => {
+            onPlayButtonClick={() => {
               setActivePlayer(activePlayer === id ? -1 : id);
             }}
           />

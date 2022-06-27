@@ -3,15 +3,15 @@ import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import App from './components/app/app';
 import {store} from './store';
-import ErrorMessage from './components/error-message/error-message';
 import {fetchQuestionAction, checkAuthStatus} from './store/api-action';
+import {ToastContainer} from 'react-toastify';
 
 store.dispatch(fetchQuestionAction());
 store.dispatch(checkAuthStatus());
 ReactDOM.render(
   <React.StrictMode>
     <Provider store = {store}>
-      <ErrorMessage/>
+      <ToastContainer/>
       <App />
     </Provider>
   </React.StrictMode>,

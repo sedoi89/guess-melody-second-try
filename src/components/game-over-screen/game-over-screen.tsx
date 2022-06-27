@@ -1,4 +1,11 @@
+import {useDispatch} from 'react-redux';
+import {useNavigate} from 'react-router-dom';
+import {AppRoute} from '../../const';
+import {resetGame} from '../../store/action';
+
 function GameOverScreen(): JSX.Element {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   return (
     <section className="result">
       <div className="result__logo">
@@ -9,6 +16,10 @@ function GameOverScreen(): JSX.Element {
       <button
         className="replay"
         type="button"
+        onClick={() => {
+          dispatch(resetGame());
+          navigate(AppRoute.Game);
+        }}
       >
         Попробовать ещё раз
       </button>
